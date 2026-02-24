@@ -125,7 +125,7 @@ Each presentation is a single, self-contained HTML file with:
 - [Claude Code](https://claude.ai/claude-code) CLI
 - For PPT conversion: Python with `python-pptx` library
 
-## Inspired By
+## Adapted From
 
 [frontend-slides](https://github.com/zarazhangrui/frontend-slides) by [@zarazhangrui](https://github.com/zarazhangrui)
 
