@@ -45,7 +45,7 @@ Then invoke it by typing `/domino-slides` in Claude Code.
 ```
 /domino-slides
 
-> "Create a pitch deck for my AI startup"
+> "Create a presentation on best practices for deploying models in Domino"
 ```
 
 Domino Slides will:
