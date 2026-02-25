@@ -1,6 +1,6 @@
 ---
 name: domino-slides
-description: Create stunning, Domino-branded HTML presentations from scratch or by converting PowerPoint files. Use when the user wants to build a presentation, convert a PPT/PPTX to web, or create slides for a talk/pitch. All presentations follow the Domino Brand Guidelines with approved colors, typography (New Grotesk), and design patterns.
+description: Create stunning, Domino-branded HTML presentations from scratch or by converting PowerPoint files. Use when the user wants to build a presentation, convert a PPT/PPTX to web, or create slides for a talk or customer meeting. All presentations follow the Domino Brand Guidelines with approved colors, typography (New Grotesk), and design patterns.
 ---
 
 # Domino Slides
@@ -22,23 +22,47 @@ Create zero-dependency, Domino-branded HTML presentations that run entirely in t
 Every presentation MUST include:
 
 ### Corner Logo (bottom-left)
-- The Domino logo displayed on every slide via a fixed-position `<img>` element
-- Use the `domino-logo.png` file if available in the working directory, otherwise prompt the user for the logo path
-- For self-contained presentations, embed the logo as a base64 data URI in the `src` attribute
-- The logo is hidden during PDF export (`@media print`) but included in PPT export
+- The Domino logo is displayed on every slide via a fixed-position `<img>` element
+- The logo base64 data is stored in `~/.claude/skills/domino-slides/domino-logo-base64.txt` — **read that file** and copy the `<img>` tag directly into every presentation
+- **DO NOT** use `<img src="domino-logo.png">` or any file path — only use the base64 data URI from `~/.claude/skills/domino-slides/domino-logo-base64.txt`
+- **Position:** fixed `bottom: 20px; left: 24px;` — bottom-left corner, NOT top-right
+- **Size:** `height: 22px; width: auto;` — small and unobtrusive
+- **Dark themes:** Add `filter: brightness(0) invert(1)` to make the logo white
+- Hidden during PDF export (`@media print`) but included in PPT export
 
+**The logo HTML — read `~/.claude/skills/domino-slides/domino-logo-base64.txt` and copy the img tag into every presentation:**
 ```html
-<img src="domino-logo.png" class="corner-logo" alt="Domino">
+<!-- Domino Logo (bottom-left) -->
+<!-- Read ~/.claude/skills/domino-slides/domino-logo-base64.txt and paste the <img> tag here -->
 ```
 
-### Export Buttons (top-right)
+**Required CSS:**
+```css
+.corner-logo {
+    position: fixed;
+    bottom: 20px;
+    left: 24px;
+    height: 22px;
+    width: auto;
+    z-index: 1000;
+    pointer-events: none;
+    border: none;
+    padding: 0;
+    margin: 0;
+    outline: none;
+}
+```
+
+### Export Buttons & Dark Mode Toggle (top-right)
+- **Dark mode toggle** — Moon/sun icon that toggles `html.dark-mode` class for dark background
 - **PDF button** — Reveals all slides then triggers `window.print()` for browser-native PDF export
 - **PPT button** — Uses PptxGenJS (loaded from CDN) to generate a downloadable `.pptx` file
 - Buttons use a subtle frosted-glass style that adapts to light or dark themes
-- Both buttons are hidden during print (`@media print`)
+- All buttons are hidden during print (`@media print`)
 
 ```html
 <div class="export-btns">
+    <button class="dark-mode-btn" id="darkModeBtn" onclick="toggleDarkMode()" title="Toggle dark mode">&#9790;</button>
     <button class="export-btn" onclick="document.querySelectorAll('.slide').forEach(s=>s.classList.add('visible'));setTimeout(()=>window.print(),100)" title="Export to PDF">PDF</button>
     <button class="export-btn" id="pptBtn" onclick="exportToPPT()" title="Download as PowerPoint">PPT</button>
 </div>
@@ -307,7 +331,7 @@ Before designing, understand the content. Ask via AskUserQuestion:
 - Header: "Purpose"
 - Question: "What is this presentation for?"
 - Options:
-  - "Pitch deck" — Selling an idea, product, or company to investors/clients
+  - "Customer/prospect presentation" — Showcasing Domino platform capabilities to customers or prospects
   - "Teaching/Tutorial" — Explaining concepts, how-to guides, educational content
   - "Conference talk" — Speaking at an event, tech talk, keynote
   - "Internal presentation" — Team updates, strategy meetings, company updates
@@ -316,7 +340,7 @@ Before designing, understand the content. Ask via AskUserQuestion:
 - Header: "Length"
 - Question: "Approximately how many slides?"
 - Options:
-  - "Short (5-10)" — Quick pitch, lightning talk
+  - "Short (5-10)" — Quick overview, lightning talk
   - "Medium (10-20)" — Standard presentation
   - "Long (20+)" — Deep dive, comprehensive talk
 
@@ -356,7 +380,7 @@ Users can select a style in **two ways**:
 **Available Presets (all Domino-branded):**
 | Preset | Vibe | Best For |
 |--------|------|----------|
-| Domino Dark Hero | Bold, modern, high-impact | Keynotes, pitch decks |
+| Domino Dark Hero | Bold, modern, high-impact | Keynotes, customer presentations |
 | Domino Dark Minimal | Clean, confident, sophisticated | Technical, data-heavy |
 | Domino Dark Gradient Accent | Premium, energetic, forward-looking | Product launches, keynotes |
 | Domino Light Corporate | Professional, clean, trustworthy | Standard corporate |
@@ -492,15 +516,13 @@ Now generate the full presentation based on:
 
 For single presentations:
 ```
-presentation.html    # Self-contained presentation
-domino-logo.png      # Domino corner logo (or embedded as base64)
+presentation.html    # Self-contained presentation (logo embedded as base64)
 assets/              # Images, if any
 ```
 
 For projects with multiple presentations:
 ```
 [presentation-name].html
-domino-logo.png
 [presentation-name]-assets/
 ```
 
@@ -698,6 +720,85 @@ Follow this structure for all presentations:
         }
 
         /* ===========================================
+           DARK MODE TOGGLE BUTTON
+           Moon/sun icon button next to export buttons.
+           =========================================== */
+        .dark-mode-btn {
+            background: rgba(0,0,0,0.04);
+            border: 1px solid rgba(0,0,0,0.1);
+            color: rgba(0,0,0,0.4);
+            font-size: 0.8rem;
+            padding: 4px 8px;
+            border-radius: 6px;
+            cursor: pointer;
+            backdrop-filter: blur(8px);
+            transition: background 0.2s ease, color 0.2s ease;
+            line-height: 1;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .dark-mode-btn:hover {
+            background: rgba(0,0,0,0.08);
+            color: rgba(0,0,0,0.7);
+        }
+
+        /* ===========================================
+           DARK MODE OVERRIDES
+           Toggled via html.dark-mode class.
+           Presentations with light default backgrounds
+           should include these overrides so dark mode
+           works out of the box.
+           =========================================== */
+        html.dark-mode {
+            --bg: #0a0a0f;
+            --bg-primary: #0a0a0f;
+            --text: #e8e6f0;
+            --text-primary: #e8e6f0;
+            --text-secondary: #a8a4b8;
+            --card-bg: #16161e;
+            --card-border: rgba(255, 255, 255, 0.1);
+        }
+        html.dark-mode body { background: var(--bg, #0a0a0f); color: var(--text, #e8e6f0); }
+
+        /* Dark mode: export & toggle buttons */
+        html.dark-mode .export-btn,
+        html.dark-mode .dark-mode-btn {
+            background: rgba(255,255,255,0.06);
+            border-color: rgba(255,255,255,0.15);
+            color: rgba(255,255,255,0.5);
+        }
+        html.dark-mode .export-btn:hover,
+        html.dark-mode .dark-mode-btn:hover {
+            background: rgba(255,255,255,0.12);
+            color: rgba(255,255,255,0.8);
+        }
+
+        /* Dark mode: nav dots */
+        html.dark-mode .nav-dot {
+            background: rgba(255,255,255,0.15);
+            border-color: rgba(255,255,255,0.2);
+        }
+
+        /* Dark mode: SVG diagram overrides */
+        html.dark-mode svg rect[fill="#ffffff"],
+        html.dark-mode svg circle[fill="#ffffff"],
+        html.dark-mode svg ellipse[fill="#ffffff"] {
+            fill: #1e1e2a;
+        }
+        html.dark-mode svg text[fill="#1a1a1e"] {
+            fill: #e8e6f0;
+        }
+        html.dark-mode svg text[fill="#777384"] {
+            fill: #a8a4b8;
+        }
+
+        /* Dark mode: corner logo invert */
+        html.dark-mode .corner-logo {
+            filter: brightness(0) invert(1);
+        }
+
+        /* ===========================================
            PRINT / PDF EXPORT STYLES
            Hides UI chrome when printing to PDF.
            =========================================== */
@@ -745,14 +846,15 @@ Follow this structure for all presentations:
     </style>
 </head>
 <body>
-    <!-- Export buttons (top-right) -->
+    <!-- Export buttons + dark mode toggle (top-right) -->
     <div class="export-btns">
+        <button class="dark-mode-btn" id="darkModeBtn" onclick="toggleDarkMode()" title="Toggle dark mode">&#9790;</button>
         <button class="export-btn" onclick="document.querySelectorAll('.slide').forEach(s=>s.classList.add('visible'));setTimeout(()=>window.print(),100)" title="Export to PDF">PDF</button>
         <button class="export-btn" id="pptBtn" onclick="exportToPPT()" title="Download as PowerPoint">PPT</button>
     </div>
 
-    <!-- Domino logo (bottom-left) -->
-    <img src="domino-logo.png" class="corner-logo" alt="Domino">
+    <!-- Domino Logo (bottom-left) -->
+    <!-- Read ~/.claude/skills/domino-slides/domino-logo-base64.txt and paste the <img> tag here -->
 
     <!-- Progress bar (optional) -->
     <div class="progress-bar"></div>
@@ -880,6 +982,20 @@ Follow this structure for all presentations:
                 btn.textContent = 'PPT';
             }
         }
+
+        /* ===========================================
+           DARK MODE TOGGLE
+           Toggles html.dark-mode class and swaps
+           the button icon between moon and sun.
+           =========================================== */
+        function toggleDarkMode() {
+            const html = document.documentElement;
+            const btn = document.getElementById('darkModeBtn');
+            html.classList.toggle('dark-mode');
+            const isDark = html.classList.contains('dark-mode');
+            btn.innerHTML = isDark ? '&#9788;' : '&#9790;';
+            btn.title = isDark ? 'Switch to light mode' : 'Toggle dark mode';
+        }
     </script>
 </body>
 </html>
@@ -906,7 +1022,13 @@ Every presentation should include:
    - Include the Domino corner logo in every PPT slide
    - The `exportToPPT()` function should read CSS variables and computed styles to match the presentation theme
 
-4. **Optional Enhancements** (based on style):
+4. **Dark Mode Toggle** — `toggleDarkMode()` function
+   - Toggles `html.dark-mode` class on the document element
+   - Swaps button icon between moon (&#9790;) and sun (&#9788;)
+   - All dark mode CSS overrides are scoped under `html.dark-mode` selector
+   - Does NOT modify the default light mode styles
+
+5. **Optional Enhancements** (based on style):
    - Custom cursor with trail
    - Particle system background (canvas)
    - Parallax effects
@@ -1293,7 +1415,7 @@ class TiltEffect {
 
 ## Example Session Flow
 
-1. User: "I want to create a pitch deck for my AI startup"
+1. User: "I want to create a presentation on Domino's MLOps capabilities for a customer meeting"
 2. Skill asks about purpose, length, content
 3. User shares their bullet points and key messages
 4. Skill asks about desired feeling (Impressed + Excited)

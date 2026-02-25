@@ -27,14 +27,14 @@ mkdir -p ~/.claude/skills/domino-slides
 # Copy the files
 cp SKILL.md ~/.claude/skills/domino-slides/
 cp STYLE_PRESETS.md ~/.claude/skills/domino-slides/
-cp domino-logo.png ~/.claude/skills/domino-slides/
+cp domino-logo-base64.txt ~/.claude/skills/domino-slides/
 ```
 
 Then invoke it by typing `/domino-slides` in Claude Code.
 
 ### Manual Download
 
-1. Download `SKILL.md`, `STYLE_PRESETS.md`, and `domino-logo.png` from this repo
+1. Download `SKILL.md`, `STYLE_PRESETS.md`, and `domino-logo-base64.txt` from this repo
 2. Place them in `~/.claude/skills/domino-slides/`
 3. Restart Claude Code
 
@@ -77,7 +77,7 @@ All presets follow the Domino Brand Guidelines — approved colors, New Grotesk 
 
 | Preset | Vibe | Best For |
 |--------|------|----------|
-| Domino Dark Hero | Bold, modern, high-impact | Keynotes, pitch decks |
+| Domino Dark Hero | Bold, modern, high-impact | Keynotes, customer presentations |
 | Domino Dark Minimal | Clean, confident, sophisticated | Technical, data-heavy |
 | Domino Dark Gradient Accent | Premium, energetic, forward-looking | Product launches, keynotes |
 
@@ -118,7 +118,7 @@ Each presentation is a single, self-contained HTML file with:
 |------|---------|
 | `SKILL.md` | Main skill instructions for Claude Code |
 | `STYLE_PRESETS.md` | Reference file with 9 Domino-branded style presets |
-| `domino-logo.png` | Domino logo displayed in the bottom-left corner of every slide |
+| `domino-logo-base64.txt` | Domino logo as a base64-encoded `<img>` tag (embedded into every presentation) |
 
 ## Requirements
 
