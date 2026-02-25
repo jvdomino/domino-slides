@@ -284,6 +284,16 @@ html.dark-mode .dark-mode-btn:hover {
     -webkit-text-fill-color: var(--domino-orange) !important;
     color: var(--domino-orange) !important;
   }
+  /* Fix bullet point boxes in print */
+  .bullet-list li::before {
+    box-shadow: none !important;
+    background: var(--domino-orange) !important;
+    border-radius: 50% !important;
+  }
+  .icon-bullet .icon {
+    box-shadow: none !important;
+    background: var(--domino-orange) !important;
+  }
   /* Ensure SVG filters render */
   svg { overflow: visible; }
   @page { size: landscape; margin: 0; }
