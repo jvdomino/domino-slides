@@ -1316,9 +1316,44 @@ html.dark-mode svg text[fill="#777384"] {
 
 
 <!-- ============================================================
-     SLIDE 5 - Architecture: How It Works
+     SLIDE 5 - Rethinking Code Quality
      ============================================================ -->
 <section class="slide" id="slide-5">
+  <div class="slide-inner">
+    <p class="tag reveal">Quality</p>
+    <h2 class="reveal">Rethinking <span class="accent-gradient">"Quality"</span><br>in AI-Generated Code</h2>
+    <p class="subtitle reveal">When the LLM writes and maintains the code, which heuristics still apply?</p>
+    <div class="two-col reveal">
+      <div class="compare-col vibe">
+        <h3>What Changes</h3>
+        <ul class="bullet-list">
+          <li>LLMs work well with large single files over deep directory trees</li>
+          <li>DRY and naming conventions matter less when AI indexes the full codebase</li>
+          <li>Human readability is less critical if humans aren't the primary maintainers</li>
+          <li>Code review shifts from manual to LLM-based assessment pipelines at machine speed</li>
+        </ul>
+      </div>
+      <div class="compare-col agentic">
+        <h3>What Matters More</h3>
+        <ul class="bullet-list">
+          <li>Layered testing - unit, integration, and e2e - anchored to the spec</li>
+          <li>Security and auditability remain non-negotiable, especially in regulated industries</li>
+          <li>Validate behavior against original intent, not just passing unit tests</li>
+          <li>Human oversight is still critical - LLMs alone can't build sufficient test quality</li>
+        </ul>
+      </div>
+    </div>
+    <div class="callout reveal">
+      Teams that move fast without structured iteration accumulate tech debt that erases productivity gains within months.
+    </div>
+  </div>
+</section>
+
+
+<!-- ============================================================
+     SLIDE 6 - Architecture: How It Works
+     ============================================================ -->
+<section class="slide" id="slide-6">
   <div class="slide-inner">
     <div class="split-layout">
       <div class="split-text">
@@ -1436,9 +1471,9 @@ html.dark-mode svg text[fill="#777384"] {
 
 
 <!-- ============================================================
-     SLIDE 6 - Claude Code
+     SLIDE 7 - Claude Code
      ============================================================ -->
-<section class="slide" id="slide-6">
+<section class="slide" id="slide-7">
   <div class="slide-inner">
     <p class="tag reveal">Tool</p>
     <h2 class="reveal"><span class="accent-gradient">Claude Code</span></h2>
@@ -1457,9 +1492,9 @@ html.dark-mode svg text[fill="#777384"] {
 
 
 <!-- ============================================================
-     SLIDE 7 - Claude Opus 4.6
+     SLIDE 8 - Claude Opus 4.6
      ============================================================ -->
-<section class="slide" id="slide-7">
+<section class="slide" id="slide-8">
   <div class="slide-inner">
     <p class="tag reveal">Model</p>
     <h2 class="reveal">Claude <span class="accent-gradient">Opus 4.6</span></h2>
@@ -1488,9 +1523,9 @@ html.dark-mode svg text[fill="#777384"] {
 
 
 <!-- ============================================================
-     SLIDE 8 - CLAUDE.md
+     SLIDE 9 - CLAUDE.md
      ============================================================ -->
-<section class="slide" id="slide-8">
+<section class="slide" id="slide-9">
   <div class="slide-inner">
     <div class="split-layout">
       <div class="split-text">
@@ -1537,9 +1572,9 @@ domino.yaml   - Domino environment config
 
 
 <!-- ============================================================
-     SLIDE 9 - Claude Code Skills
+     SLIDE 10 - Claude Code Skills
      ============================================================ -->
-<section class="slide" id="slide-9">
+<section class="slide" id="slide-10">
   <div class="slide-inner">
     <p class="tag reveal">Extensibility</p>
     <h2 class="reveal">Claude Code <span class="accent-gradient">Skills</span></h2>
@@ -1555,9 +1590,9 @@ domino.yaml   - Domino environment config
 
 
 <!-- ============================================================
-     SLIDE 10 - Claude Code Agents
+     SLIDE 11 - Claude Code Agents
      ============================================================ -->
-<section class="slide" id="slide-10">
+<section class="slide" id="slide-11">
   <div class="slide-inner">
     <p class="tag reveal">Architecture</p>
     <h2 class="reveal">Claude Code <span class="accent-gradient">Agents</span></h2>
@@ -1582,14 +1617,17 @@ domino.yaml   - Domino environment config
         </ul>
       </div>
     </div>
+    <div class="callout reveal">
+      <strong>When to use agents:</strong> Research across large codebases, parallel test writing, multi-file refactors, and any task that benefits from dividing work across independent contexts.
+    </div>
   </div>
 </section>
 
 
 <!-- ============================================================
-     SLIDE 11 - Claude Code Plugins
+     SLIDE 12 - Claude Code Plugins
      ============================================================ -->
-<section class="slide" id="slide-11">
+<section class="slide" id="slide-12">
   <div class="slide-inner">
     <p class="tag reveal">Ecosystem</p>
     <h2 class="reveal">Claude Code <span class="accent-gradient">Plugins</span></h2>
@@ -1605,9 +1643,9 @@ domino.yaml   - Domino environment config
 
 
 <!-- ============================================================
-     SLIDE 12 - The Ralph Loop (Concept)
+     SLIDE 13 - The Ralph Loop (Concept)
      ============================================================ -->
-<section class="slide" id="slide-12">
+<section class="slide" id="slide-13">
   <div class="slide-inner">
     <p class="tag reveal">Agentic Pattern</p>
     <h2 class="reveal">The <span class="accent-gradient">Ralph Loop</span></h2>
@@ -1657,9 +1695,9 @@ domino.yaml   - Domino environment config
 
 
 <!-- ============================================================
-     SLIDE 13 - The Ralph Loop (Install & Best Practices)
+     SLIDE 14 - The Ralph Loop (Install & Best Practices)
      ============================================================ -->
-<section class="slide" id="slide-13">
+<section class="slide" id="slide-14">
   <div class="slide-inner">
     <div class="split-layout">
       <div class="split-text">
@@ -1768,9 +1806,9 @@ Output &lt;promise&gt;DONE&lt;/promise&gt;"
 
 
 <!-- ============================================================
-     SLIDE 14 - Domino Data Lab Plugin
+     SLIDE 15 - Domino Data Lab Plugin
      ============================================================ -->
-<section class="slide" id="slide-14">
+<section class="slide" id="slide-15">
   <div class="slide-inner">
     <p class="tag reveal">Integration</p>
     <h2 class="reveal">Domino Data Lab<br><span class="accent-gradient">Plugin</span> for Claude Code</h2>
@@ -1792,41 +1830,6 @@ Output &lt;promise&gt;DONE&lt;/promise&gt;"
     </ul>
     <div class="callout reveal">
       <strong>GitHub:</strong> <a href="https://github.com/dominodatalab/domino-claude-plugin" style="color:var(--accent-1);text-decoration:none">github.com/dominodatalab/domino-claude-plugin</a>
-    </div>
-  </div>
-</section>
-
-
-<!-- ============================================================
-     SLIDE 15 - Rethinking Code Quality
-     ============================================================ -->
-<section class="slide" id="slide-15">
-  <div class="slide-inner">
-    <p class="tag reveal">Quality</p>
-    <h2 class="reveal">Rethinking <span class="accent-gradient">"Quality"</span><br>in AI-Generated Code</h2>
-    <p class="subtitle reveal">When the LLM writes and maintains the code, which heuristics still apply?</p>
-    <div class="two-col reveal">
-      <div class="compare-col vibe">
-        <h3>What Changes</h3>
-        <ul class="bullet-list">
-          <li>LLMs work well with large single files over deep directory trees</li>
-          <li>DRY and naming conventions matter less when AI indexes the full codebase</li>
-          <li>Human readability is less critical if humans aren't the primary maintainers</li>
-          <li>Code review shifts from manual to LLM-based assessment pipelines at machine speed</li>
-        </ul>
-      </div>
-      <div class="compare-col agentic">
-        <h3>What Matters More</h3>
-        <ul class="bullet-list">
-          <li>Layered testing - unit, integration, and e2e - anchored to the spec</li>
-          <li>Security and auditability remain non-negotiable, especially in regulated industries</li>
-          <li>Validate behavior against original intent, not just passing unit tests</li>
-          <li>Human oversight is still critical - LLMs alone can't build sufficient test quality</li>
-        </ul>
-      </div>
-    </div>
-    <div class="callout reveal">
-      Teams that move fast without structured iteration accumulate tech debt that erases productivity gains within months.
     </div>
   </div>
 </section>
@@ -2347,8 +2350,8 @@ async function exportToPPT() {
    ============================================================ */
 (function() {
   var iterText = document.getElementById('ralphIterText');
-  var slide13 = document.getElementById('slide-13');
-  if (!iterText || !slide13) return;
+  var slide14 = document.getElementById('slide-14');
+  if (!iterText || !slide14) return;
 
   var iter = 0;
   var maxIter = 20;
@@ -2379,7 +2382,7 @@ async function exportToPPT() {
       }
     });
   }, { threshold: 0.5 });
-  obs.observe(slide13);
+  obs.observe(slide14);
 })();
 </script>
 
