@@ -1174,7 +1174,7 @@ html.dark-mode svg text[fill="#777384"] {
 <nav class="nav-dots"></nav>
 
 <!-- Slide counter -->
-<div class="slide-counter"><span class="current">1</span> / <span class="total">19</span></div>
+<div class="slide-counter"><span class="current">1</span> / <span class="total">20</span></div>
 
 
 <!-- ============================================================
@@ -1798,9 +1798,44 @@ Output &lt;promise&gt;DONE&lt;/promise&gt;"
 
 
 <!-- ============================================================
-     SLIDE 15 - Persisting Sessions
+     SLIDE 15 - Rethinking Code Quality
      ============================================================ -->
 <section class="slide" id="slide-15">
+  <div class="slide-inner">
+    <p class="tag reveal">Quality</p>
+    <h2 class="reveal">Rethinking <span class="accent-gradient">"Quality"</span><br>in AI-Generated Code</h2>
+    <p class="subtitle reveal">When the LLM writes and maintains the code, which heuristics still apply?</p>
+    <div class="two-col reveal">
+      <div class="compare-col vibe">
+        <h3>What Changes</h3>
+        <ul class="bullet-list">
+          <li>LLMs work well with large single files over deep directory trees</li>
+          <li>DRY and naming conventions matter less when AI indexes the full codebase</li>
+          <li>Human readability is less critical if humans aren't the primary maintainers</li>
+          <li>Code review shifts from manual to LLM-based assessment pipelines at machine speed</li>
+        </ul>
+      </div>
+      <div class="compare-col agentic">
+        <h3>What Matters More</h3>
+        <ul class="bullet-list">
+          <li>Layered testing - unit, integration, and e2e - anchored to the spec</li>
+          <li>Security and auditability remain non-negotiable, especially in regulated industries</li>
+          <li>Validate behavior against original intent, not just passing unit tests</li>
+          <li>Human oversight is still critical - LLMs alone can't build sufficient test quality</li>
+        </ul>
+      </div>
+    </div>
+    <div class="callout reveal">
+      Teams that move fast without structured iteration accumulate tech debt that erases productivity gains within months.
+    </div>
+  </div>
+</section>
+
+
+<!-- ============================================================
+     SLIDE 16 - Persisting Sessions
+     ============================================================ -->
+<section class="slide" id="slide-16">
   <div class="slide-inner">
     <p class="tag reveal">Configuration</p>
     <h2 class="reveal">Persisting Your<br><span class="accent-gradient">Claude Code Sessions</span></h2>
@@ -1822,9 +1857,9 @@ Output &lt;promise&gt;DONE&lt;/promise&gt;"
 
 
 <!-- ============================================================
-     SLIDE 16 - Using Alternative LLMs
+     SLIDE 17 - Using Alternative LLMs
      ============================================================ -->
-<section class="slide" id="slide-16">
+<section class="slide" id="slide-17">
   <div class="slide-inner">
     <p class="tag reveal">Alternative Models</p>
     <h2 class="reveal">No Access to<br><span class="accent-gradient">Third-Party LLMs?</span></h2>
@@ -1846,9 +1881,9 @@ claude --model minimax/M2.5</div>
 
 
 <!-- ============================================================
-     SLIDE 17 - Demo
+     SLIDE 18 - Demo
      ============================================================ -->
-<section class="slide slide--title" id="slide-17">
+<section class="slide slide--title" id="slide-18">
   <div class="slide-inner">
     <p class="tag reveal">Live Demo</p>
     <h1 class="reveal">Now let&rsquo;s<br><span class="accent-gradient">vibe code</span><br>a little ...</h1>
@@ -1857,9 +1892,9 @@ claude --model minimax/M2.5</div>
 
 
 <!-- ============================================================
-     SLIDE 18 - Next Steps
+     SLIDE 19 - Next Steps
      ============================================================ -->
-<section class="slide" id="slide-18">
+<section class="slide" id="slide-19">
   <div class="slide-inner">
     <p class="tag reveal">Get Started</p>
     <h2 class="reveal"><span class="accent-gradient">Next Steps</span></h2>
@@ -1876,9 +1911,9 @@ claude --model minimax/M2.5</div>
 
 
 <!-- ============================================================
-     SLIDE 19 - Closing
+     SLIDE 20 - Closing
      ============================================================ -->
-<section class="slide slide--closing" id="slide-19">
+<section class="slide slide--closing" id="slide-20">
   <div class="slide-inner">
     <h1 class="reveal"><span class="accent-gradient">Thank You</span></h1>
     <p class="subtitle reveal">Questions?</p>
