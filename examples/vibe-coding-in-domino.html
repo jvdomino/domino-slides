@@ -1127,7 +1127,7 @@ html.dark-mode svg text[fill="#777384"] {
 <nav class="nav-dots"></nav>
 
 <!-- Slide counter -->
-<div class="slide-counter"><span class="current">1</span> / <span class="total">18</span></div>
+<div class="slide-counter"><span class="current">1</span> / <span class="total">19</span></div>
 
 
 <!-- ============================================================
@@ -1279,8 +1279,8 @@ html.dark-mode svg text[fill="#777384"] {
         <h2 class="reveal">How It <span class="accent-gradient">Works</span></h2>
         <p class="subtitle reveal">Two Ways to Use Coding Assistants with Domino</p>
         <ul class="bullet-list reveal">
-          <li><strong style="color:var(--text)">Path A &mdash; Local IDE</strong> &mdash; Run your favorite client IDE (i.e. VSCode) locally and connect to a Domino workspace via <strong style="color:var(--text)">Domino SSH</strong></li>
-          <li><strong style="color:var(--text)">Path B &mdash; Domino Workspace</strong> &mdash; Launch Claude Code directly inside a Domino workspace terminal &mdash; no local setup needed</li>
+          <li><strong style="color:var(--text)">Path A - Local IDE</strong> - Run your favorite client IDE (i.e. VSCode) locally and connect to a Domino workspace via <strong style="color:var(--text)">Domino SSH</strong></li>
+          <li><strong style="color:var(--text)">Path B - Domino Workspace</strong> - Launch Claude Code directly inside a Domino workspace terminal - no local setup needed</li>
         </ul>
         <div class="callout reveal">
           Both paths give your coding assistant full access to Domino compute, data, and deployment APIs.
@@ -1451,12 +1451,12 @@ html.dark-mode svg text[fill="#777384"] {
         <h2 class="reveal"><span class="accent-gradient">CLAUDE.md</span></h2>
         <p class="subtitle reveal">Persistent Project Context Loaded Every Session</p>
         <ul class="bullet-list reveal">
-          <li><strong style="color:var(--text)">What it is</strong> &mdash; A markdown file at your project root that tells Claude about your codebase, conventions, and workflows</li>
-          <li><strong style="color:var(--text)">Auto-loaded</strong> &mdash; Claude reads it automatically at the start of every session &mdash; no manual prompting needed</li>
-          <li><strong style="color:var(--text)">Bootstrap from repo</strong> &mdash; Run <code>/init</code> to auto-generate a CLAUDE.md with codebase documentation</li>
+          <li><strong style="color:var(--text)">What it is</strong> - A markdown file at your project root that tells Claude about your codebase, conventions, and workflows</li>
+          <li><strong style="color:var(--text)">Auto-loaded</strong> - Claude reads it automatically at the start of every session - no manual prompting needed</li>
+          <li><strong style="color:var(--text)">Bootstrap from repo</strong> - Run <code>/init</code> to auto-generate a CLAUDE.md with codebase documentation</li>
         </ul>
         <div class="callout reveal">
-          Think of it as a <strong>README for your AI</strong> &mdash; the better the context, the better the output.
+          Think of it as a <strong>README for your AI</strong> - the better the context, the better the output.
         </div>
       </div>
       <div class="split-diagram reveal">
@@ -1464,14 +1464,14 @@ html.dark-mode svg text[fill="#777384"] {
 <span style="color:var(--domino-orange);font-weight:700"># CLAUDE.md</span>
 
 <span style="color:var(--domino-purple);font-weight:600">## Project</span>
-ML scoring service &mdash; Python 3.11, FastAPI,
+ML scoring service - Python 3.11, FastAPI,
 scikit-learn. Deployed on Domino as a Model API.
 
 <span style="color:var(--domino-purple);font-weight:600">## Repo layout</span>
-src/          &mdash; application code
-src/models/   &mdash; trained model artifacts
-tests/        &mdash; pytest unit &amp; integration tests
-domino.yaml   &mdash; Domino environment config
+src/          - application code
+src/models/   - trained model artifacts
+tests/        - pytest unit &amp; integration tests
+domino.yaml   - Domino environment config
 
 <span style="color:var(--domino-purple);font-weight:600">## Conventions</span>
 &bull; Use <span style="color:var(--domino-orange)">ruff</span> for linting &amp; formatting
@@ -1629,7 +1629,7 @@ Output &lt;promise&gt;DONE&lt;/promise&gt;"
           <li>Write prompts with binary success criteria</li>
           <li>Run in git-tracked dirs; use Docker for AFK runs</li>
           <li>Chain phases for complex projects</li>
-          <li>Review output like a PR &mdash; <code>/cancel-ralph</code> to stop</li>
+          <li>Review output like a PR - <code>/cancel-ralph</code> to stop</li>
         </ul>
       </div>
       <div class="split-diagram reveal">
@@ -1772,9 +1772,33 @@ Output &lt;promise&gt;DONE&lt;/promise&gt;"
 
 
 <!-- ============================================================
-     SLIDE 16 - Demo
+     SLIDE 16 - Using Alternative LLMs
      ============================================================ -->
-<section class="slide slide--title" id="slide-16">
+<section class="slide" id="slide-16">
+  <div class="slide-inner">
+    <p class="tag reveal">Alternative Models</p>
+    <h2 class="reveal">No Access to<br><span class="accent-gradient">Third-Party LLMs?</span></h2>
+    <p class="subtitle reveal">Domino 6.2 supports LLM hosting - use models like MiniMax M2.5 directly on-platform</p>
+    <div class="code-block reveal" style="font-size:clamp(0.65rem,1.05vw,0.82rem);line-height:1.6"><span style="color:var(--text-secondary)"># Point Claude Code to your Domino-hosted LLM</span>
+export ANTHROPIC_BASE_URL="https://your-domino-host/model-endpoint"
+
+<span style="color:var(--text-secondary)"># Launch with your hosted model</span>
+claude --model minimax/M2.5</div>
+    <ul class="bullet-list reveal" style="margin-top:clamp(8px,1.2vh,14px)">
+      <li><strong style="color:var(--text)">ANTHROPIC_BASE_URL</strong> - set to your Domino-hosted LLM endpoint URL</li>
+      <li><strong style="color:var(--text)">--model</strong> - specify which hosted model to use</li>
+    </ul>
+    <div class="callout reveal">
+      Claude Code works as the <strong>agentic framework</strong> - swap the underlying model to any compatible LLM hosted in Domino.
+    </div>
+  </div>
+</section>
+
+
+<!-- ============================================================
+     SLIDE 17 - Demo
+     ============================================================ -->
+<section class="slide slide--title" id="slide-17">
   <div class="slide-inner">
     <p class="tag reveal">Live Demo</p>
     <h1 class="reveal">Now let&rsquo;s<br><span class="accent-gradient">vibe code</span><br>a little ...</h1>
@@ -1783,28 +1807,28 @@ Output &lt;promise&gt;DONE&lt;/promise&gt;"
 
 
 <!-- ============================================================
-     SLIDE 17 - Next Steps
+     SLIDE 18 - Next Steps
      ============================================================ -->
-<section class="slide" id="slide-17">
+<section class="slide" id="slide-18">
   <div class="slide-inner">
     <p class="tag reveal">Get Started</p>
     <h2 class="reveal"><span class="accent-gradient">Next Steps</span></h2>
     <p class="subtitle reveal">How to Start Vibe Coding in Domino Today</p>
     <ul class="bullet-list reveal">
-      <li><strong style="color:var(--text)">Install Claude Code</strong> &mdash; <code>npm install -g @anthropic-ai/claude-code</code> in your Domino workspace or local terminal</li>
-      <li><strong style="color:var(--text)">Try it in a Domino workspace</strong> &mdash; Open a workspace terminal and run <code>claude</code> to start a session</li>
-      <li><strong style="color:var(--text)">Connect locally via SSH</strong> &mdash; Use VS Code Remote-SSH with your Domino workspace for a local IDE experience</li>
-      <li><strong style="color:var(--text)">Add a CLAUDE.md</strong> &mdash; Create a project context file so Claude understands your repo, stack, and conventions</li>
-      <li><strong style="color:var(--text)">Explore the Domino Plugin</strong> &mdash; Install the Domino MCP plugin to give Claude access to Domino APIs and deployments</li>
+      <li><strong style="color:var(--text)">Install Claude Code</strong> - <code>npm install -g @anthropic-ai/claude-code</code> in your Domino workspace or local terminal</li>
+      <li><strong style="color:var(--text)">Try it in a Domino workspace</strong> - Open a workspace terminal and run <code>claude</code> to start a session</li>
+      <li><strong style="color:var(--text)">Connect locally via SSH</strong> - Use VS Code Remote-SSH with your Domino workspace for a local IDE experience</li>
+      <li><strong style="color:var(--text)">Add a CLAUDE.md</strong> - Create a project context file so Claude understands your repo, stack, and conventions</li>
+      <li><strong style="color:var(--text)">Explore the Domino Plugin</strong> - Install the Domino MCP plugin to give Claude access to Domino APIs and deployments</li>
     </ul>
   </div>
 </section>
 
 
 <!-- ============================================================
-     SLIDE 18 - Closing
+     SLIDE 19 - Closing
      ============================================================ -->
-<section class="slide slide--closing" id="slide-18">
+<section class="slide slide--closing" id="slide-19">
   <div class="slide-inner">
     <h1 class="reveal"><span class="accent-gradient">Thank You</span></h1>
     <p class="subtitle reveal">Questions?</p>
