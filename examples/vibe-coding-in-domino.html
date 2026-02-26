@@ -237,6 +237,43 @@ html.dark-mode .dark-mode-btn:hover {
     box-shadow: none !important;
     background: var(--domino-orange) !important;
   }
+  /* Split layouts: force side-by-side in print */
+  .split-layout {
+    grid-template-columns: 1fr 1fr !important;
+    align-items: start !important;
+  }
+  .split-diagram {
+    margin-top: 0 !important;
+    max-height: 65vh;
+    overflow: hidden;
+  }
+  .split-diagram .arch-diagram {
+    max-height: 60vh;
+    width: auto;
+  }
+  .split-diagram .code-block {
+    max-height: 65vh;
+    overflow: hidden;
+    font-size: 0.65rem !important;
+  }
+  /* Vibe demo: force final state visible in print */
+  .vibe-split {
+    grid-template-columns: 1fr 1fr !important;
+  }
+  .vibe-demo {
+    display: flex !important;
+    margin-top: 0 !important;
+  }
+  .vibe-dash-header,
+  .vibe-stat,
+  .vibe-table,
+  .vibe-chart {
+    opacity: 1 !important;
+    transform: none !important;
+    transition: none !important;
+  }
+  .vibe-cli { display: none !important; }
+  .vibe-cursor { display: none !important; }
   @page { size: landscape; margin: 0; }
 }
 
