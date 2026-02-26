@@ -1721,33 +1721,9 @@ Output &lt;promise&gt;DONE&lt;/promise&gt;"
 
 
 <!-- ============================================================
-     SLIDE 14 - Persisting Sessions
+     SLIDE 14 - Domino Data Lab Plugin
      ============================================================ -->
 <section class="slide" id="slide-14">
-  <div class="slide-inner">
-    <p class="tag reveal">Configuration</p>
-    <h2 class="reveal">Persisting Your<br><span class="accent-gradient">Claude Code Sessions</span></h2>
-    <p class="subtitle reveal">Authentication and session persistence on Domino</p>
-    <div class="icon-bullet reveal">
-      <div class="icon">~</div>
-      <p><strong>~/.claude &rarr; persistent dir:</strong> Replaces the local ~/.claude folder with a symlink to /mnt/.claude-users/&lt;username&gt;, preserving any existing contents</p>
-    </div>
-    <div class="icon-bullet reveal">
-      <div class="icon">{}</div>
-      <p><strong>~/.claude.json &rarr; persistent file:</strong> Symlinks ~/.claude.json (account metadata &amp; OAuth) to /mnt/.claude-users/&lt;username&gt;.claude.json</p>
-    </div>
-    <div class="icon-bullet reveal">
-      <div class="icon">ID</div>
-      <p><strong>Per-user storage path:</strong> Uses $DOMINO_USER_NAME (falls back to $USER) to create a unique persistent directory at /mnt/.claude-users/&lt;username&gt;</p>
-    </div>
-  </div>
-</section>
-
-
-<!-- ============================================================
-     SLIDE 15 - Domino Data Lab Plugin
-     ============================================================ -->
-<section class="slide" id="slide-15">
   <div class="slide-inner">
     <p class="tag reveal">Integration</p>
     <h2 class="reveal">Domino Data Lab<br><span class="accent-gradient">Plugin</span> for Claude Code</h2>
@@ -1767,6 +1743,30 @@ Output &lt;promise&gt;DONE&lt;/promise&gt;"
       <li><strong style="color:var(--text)">2 output styles</strong> - domino-learning (educational) and domino-mlops (production checklists)</li>
       <li><strong style="color:var(--text)">Code templates</strong> - Vite-React, Streamlit, Dash, experiment tracking, and tracing</li>
     </ul>
+  </div>
+</section>
+
+
+<!-- ============================================================
+     SLIDE 15 - Persisting Sessions
+     ============================================================ -->
+<section class="slide" id="slide-15">
+  <div class="slide-inner">
+    <p class="tag reveal">Configuration</p>
+    <h2 class="reveal">Persisting Your<br><span class="accent-gradient">Claude Code Sessions</span></h2>
+    <p class="subtitle reveal">Authentication and session persistence on Domino</p>
+    <div class="icon-bullet reveal">
+      <div class="icon">~</div>
+      <p><strong>~/.claude &rarr; persistent dir:</strong> Replaces the local ~/.claude folder with a symlink to /mnt/.claude-users/&lt;username&gt;, preserving any existing contents</p>
+    </div>
+    <div class="icon-bullet reveal">
+      <div class="icon">{}</div>
+      <p><strong>~/.claude.json &rarr; persistent file:</strong> Symlinks ~/.claude.json (account metadata &amp; OAuth) to /mnt/.claude-users/&lt;username&gt;.claude.json</p>
+    </div>
+    <div class="icon-bullet reveal">
+      <div class="icon">ID</div>
+      <p><strong>Per-user storage path:</strong> Uses $DOMINO_USER_NAME (falls back to $USER) to create a unique persistent directory at /mnt/.claude-users/&lt;username&gt;</p>
+    </div>
   </div>
 </section>
 
